@@ -1,0 +1,5 @@
+CATALOGUE_HOST: catalogue.easydevops.fun
+USER_HOST: user.easydevops.fun
+CART_HOST: cart.easydevops.fun
+SHIPPING_HOST: shipping.easydevops.fun
+PAYMENT_HOST: payment.easydevops.fun

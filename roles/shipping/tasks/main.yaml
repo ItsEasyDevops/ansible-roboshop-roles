@@ -3,10 +3,10 @@
     name: common
     tasks_from: app-setup.yaml
 
-- name: systemd setup
+- name: maven setup
   include_role:
     name: common
-    tasks_from: systemd-setup.yaml
+    tasks_from: maven.yaml
 
 - name: Import the data
   tags:
@@ -23,9 +23,7 @@
   - /app/db/app-user.sql
   - /app/db/master-data.sql
 
-- name: Restart Shipping service
-  tags: 
-    restart
-  ansible.builtin.service:
-    name: shipping
-    state: restarted
+- name: systemd setup
+  include_role:
+    name: common
+    tasks_from: systemd-setup.yaml

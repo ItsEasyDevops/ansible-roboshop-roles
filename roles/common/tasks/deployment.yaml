@@ -2,29 +2,34 @@
   ansible.builtin.service:
     name: "{{ component }}"
     state: stopped
+  tags: deployment
 
 - name: Remove /app directory
   ansible.builtin.file:
     state: absent
     path: /app
+  tags: deployment
 
 - name: Create /app directory
   ansible.builtin.file:
     state: directory
     path: /app
+  tags: deployment
   
 - name: "Download {{ component }} application"
   ansible.builtin.unarchive:
     src: "https://roboshop-artifacts.s3.amazonaws.com/{{ component }}-v{{ app_version }}.zip"
     dest: /app
     remote_src: yes
+  tags: deployment
 
 - name: "Install {{ component }} application"
   community.general.npm:
     path: /app
+  tags: deployment
 
 - name: "Restart the {{ component }} service"
   ansible.builtin.service: 
     name: "{{ component }}"
     state: restarted
-  
+  tags: deployment

@@ -39,11 +39,7 @@
   include_role:
     name: common
     tasks_from: deployment.yaml
-  tags:
-    - deployment
-  apply:
-    tags: 
-      - deployment
+  tags: deployment
 
 
 

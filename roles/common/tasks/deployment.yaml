@@ -13,17 +13,17 @@
     state: directory
     path: /app
   
-- name: Dowload {{ component }} application
+- name: "Dowload {{ component }} application"
   ansible.builtin.unarchieve:
     src: "https://roboshop-artifacts.s3.amazonaws.com/{{ component }}-v{{ app_version }}.zip"
     dest: /app
     remote_src: yes
 
-- name: Install {{ component }} application
+- name: "Install {{ component }} application"
   community.general.npm:
     path: /app
 
-- name: Restart the {{ component }} service
+- name: "Restart the {{ component }} service"
   ansible.builtin.service: 
     name: "{{ component }}"
     state: restarted

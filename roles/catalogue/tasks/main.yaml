@@ -36,7 +36,7 @@
     tasks_from: systemd-setup.yaml
 
 - name: App setup (including version upgrade tasks)
-  include_role:
+  import_role:
     name: common
     tasks_from: deployment.yaml
 

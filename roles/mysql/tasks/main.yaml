@@ -9,13 +9,17 @@
     state: started
     enabled: yes
 
+- name: Ensure Python pip is installed
+  ansible.builtin.dnf:
+    name: python3-pip
+    state: present
+
 - name: Install boto3 and botocore to use AWS SSM services
   ansible.builtin.pip:
-    name: "{{ item }}"
+    name: 
+      - boto3
+      - botocore
     executable: pip3.9
-  loop:
-    - boto3
-    - botocore
 
 - name: Set mysql root password
   ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ MYSQL_ROOT_PASSWORD }}"
